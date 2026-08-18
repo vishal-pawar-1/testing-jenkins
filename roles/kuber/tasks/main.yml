@@ -1,21 +1,14 @@
-- name: run kuber-deploy
-  hosts: servers
+- name: create kind cluster
+  command: kind create cluster --config=./kubernetes/kind-config.yaml
 
-  vars:
-    cmd:
-      - kind create cluster --config=./kubernetes/kind-config.yaml
-      - kubectl apply -f kubernetes/namespace.yml
-      - kubectl apply -f kubernetes/deployment.yml
-      - kubectl apply -f kubernetes/service.yml
-      - kubectl apply -f kubernetes/grafana-install.yml
+- name: apply namespace
+  command: kubectl apply -f kubernetes/namespace.yml
 
-  tasks:
-    - name: run commands
-      command: "{{ item }}"
-      loop: "{{ cmd }}"
-      register: result
+- name: apply deployment
+  command: kubectl apply -f kubernetes/deployment.yml
 
-    - name: show deployment output
-      debug:
-        msg: "{{ item.stdout }}"
-      loop: "{{ result.results }}"
+- name: apply service
+  command: kubectl apply -f kubernetes/service.yml
+
+- name: install grafana
+  command: kubectl apply -f kubernetes/grafana-install.yml
