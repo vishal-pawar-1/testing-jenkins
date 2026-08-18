@@ -1,8 +1,8 @@
 - name: run kuber-deploy
   hosts: servers
-  become: yes # apt install without sudo
+  become: yes
 
-  vars: 
+  vars:
     cmd:
       - kind create cluster --config=./kubernetes/kind-config.yaml
       - kubectl apply -f kubernetes/namespace.yml
@@ -10,10 +10,13 @@
       - kubectl apply -f kubernetes/service.yml
       - kubectl apply -f kubernetes/grafana-install.yml
 
-
   tasks:
     - name: run commands
       command: "{{ item }}"
       loop: "{{ cmd }}"
+      register: result
+
+    - name: show deployment output
       debug:
-        msg: "deploying complete {{ item }}"
+        msg: "{{ item.stdout }}"
+      loop: "{{ result.results }}"
