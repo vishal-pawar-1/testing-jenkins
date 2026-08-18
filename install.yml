@@ -1,0 +1,5 @@
+- name: execute all kubernetes files
+  hosts: servers
+  become: yes
+  roles:
+    - kuber/kuber-deploy
