@@ -1,8 +1,5 @@
 - name: execute all kubernetes files
   hosts: servers
 
-  vars:
-    project_dir: "{{ playbook_dir }}"
-
   roles:
     - kuber

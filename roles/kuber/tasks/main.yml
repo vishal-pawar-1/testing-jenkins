@@ -1,20 +1,20 @@
 
 - name: copy kubernetes files
   copy:
-    src: "{{ project_dir }}/kubernetes/"
-    dest: /home/ubuntu/
+    src: /var/lib/jenkins/workspace/ansible-with-kuber/kubernetes/*
+    dest: /home/ubuntu/kubernetes
 
-- name: create kind cluster
-  command: kind create cluster --config=/home/ubuntu/kubernetes/kind-config.yaml
+# - name: create kind cluster
+#   command: kind create cluster --config=/home/ubuntu/kubernetes/kind-config.yaml
 
-- name: apply namespace
-  command: kubectl apply -f /home/ubuntu/kubernetes/namespace.yml
+# - name: apply namespace
+#   command: kubectl apply -f /home/ubuntu/kubernetes/namespace.yml
 
-- name: apply deployment
-  command: kubectl apply -f /home/ubuntu/kubernetes/deployment.yml
+# - name: apply deployment
+#   command: kubectl apply -f /home/ubuntu/kubernetes/deployment.yml
 
-- name: apply service
-  command: kubectl apply -f /home/ubuntu/kubernetes/service.yml
+# - name: apply service
+#   command: kubectl apply -f /home/ubuntu/kubernetes/service.yml
 
-- name: install grafana
-  command: kubectl apply -f /home/ubuntu/kubernetes/grafana-install.yml
+# - name: install grafana
+#   command: kubectl apply -f /home/ubuntu/kubernetes/grafana-install.yml
