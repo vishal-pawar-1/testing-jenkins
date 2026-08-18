@@ -1,14 +1,19 @@
+- name: copy kubernetes files
+  copy:
+    src: ../../../kubernetes/
+    dest: /home/ubuntu/kubernetes/
+
 - name: create kind cluster
-  command: kind create cluster --config=./kubernetes/kind-config.yaml
+  command: kind create cluster --config=/home/ubuntu/kubernetes/kind-config.yaml
 
 - name: apply namespace
-  command: kubectl apply -f kubernetes/namespace.yml
+  command: kubectl apply -f /home/ubuntu/kubernetes/namespace.yml
 
 - name: apply deployment
-  command: kubectl apply -f kubernetes/deployment.yml
+  command: kubectl apply -f /home/ubuntu/kubernetes/deployment.yml
 
 - name: apply service
-  command: kubectl apply -f kubernetes/service.yml
+  command: kubectl apply -f /home/ubuntu/kubernetes/service.yml
 
 - name: install grafana
-  command: kubectl apply -f kubernetes/grafana-install.yml
+  command: kubectl apply -f /home/ubuntu/kubernetes/grafana-install.yml
