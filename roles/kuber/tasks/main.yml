@@ -10,7 +10,7 @@
     dest: /home/ubuntu/kubernetes/
 
 - name: create kind cluster
-  command: kind create cluster --config=/home/ubuntu/kubernetes/kind-config.yml
+  command: kind create cluster --name=kind0267 --config=/home/ubuntu/kubernetes/kind-config.yml
 
 - name: apply namespace
   command: kubectl apply -f /home/ubuntu/kubernetes/namespace.yml
