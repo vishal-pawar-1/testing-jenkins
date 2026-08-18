@@ -1,8 +1,13 @@
+- name: create kubernetes directory
+  file:
+    path: /home/ubuntu/kubernetes
+    state: directory
+    mode: '0755'
 
 - name: copy kubernetes files
   copy:
-    src: /var/lib/jenkins/workspace/ansible-with-kuber/kubernetes/*
-    dest: /home/ubuntu/kubernetes
+    src: "{{ project_dir }}/kubernetes/"
+    dest: /home/ubuntu/kubernetes/
 
 # - name: create kind cluster
 #   command: kind create cluster --config=/home/ubuntu/kubernetes/kind-config.yaml
