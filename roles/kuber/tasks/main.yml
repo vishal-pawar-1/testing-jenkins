@@ -1,8 +1,3 @@
-- name: create kubernetes directory
-  file:
-    path: /home/ubuntu/kubernetes
-    state: directory
-    mode: '0755'
 
 - name: copy kubernetes files
   copy:
