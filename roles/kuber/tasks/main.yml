@@ -2,7 +2,7 @@
 - name: copy kubernetes files
   copy:
     src: "{{ project_dir }}/kubernetes/"
-    dest: /home/ubuntu/kubernetes/
+    dest: /home/ubuntu/
 
 - name: create kind cluster
   command: kind create cluster --config=/home/ubuntu/kubernetes/kind-config.yaml
