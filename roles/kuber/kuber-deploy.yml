@@ -1,6 +1,5 @@
 - name: run kuber-deploy
   hosts: servers
-  become: yes
 
   vars:
     cmd:
